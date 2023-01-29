@@ -1,32 +1,37 @@
-﻿// Math.Round();-округление
-Console.Clear();
-Console.WriteLine("Введите кол-во строк: ");
-int m=Convert.ToInt32(Console.ReadLine());
-Console.WriteLine("Введите кол-во столбцов: ");
-int n=Convert.ToInt32(Console.ReadLine());
-double [,] arr=new double [m,n];
-PrintArray(arr);
-FillArray(arr);
-Console.WriteLine();
-PrintArray(arr);
-void PrintArray(double[,] matr)
+﻿using System;
+using System.Collections.Generic;
+using System.Data.SqlClient;
+using System.Threading;
+
+namespace Первая_программа_на_Rider
 {
-    for (int i=0;i<matr.GetLength(0);i++)
+  internal class Program
+  {
+    public static void Main(string[] args)
     {
-        for (int j=0;j<matr.GetLength(1);j++)
+      Console.WriteLine("Введите кол-во чисел: ");
+      int N = Convert.ToInt32(Console.ReadLine());
+      int[] arr=new int[N];
+      int kol = 0;
+      Summa_number(arr);
+      void Summa_number(int[] matr)
+      {
+        for (int i = 0; i < arr.Length; i++)
         {
-            Console.Write($"{matr[i,j]} ");
+          Console.WriteLine($"Введите {i+1} число: ");
+          matr[i] = Convert.ToInt32(Console.ReadLine());
+          if (matr[i] > 0)
+          {
+            kol++;
+          }
+          else
+          {
+            kol += 0;
+          }
         }
-    Console.WriteLine();
+
+        Console.WriteLine($"Кол-во полож чисел равно {kol}");
+      }
     }
-}
-void FillArray(double[,] matr)
-{
-    for (int i=0;i<matr.GetLength(0);i++)
-    {
-        for (int j=0;j<matr.GetLength(1);j++)
-        {
-            matr[i,j]=new Random().NextDouble();
-        }
-    }
+  }
 }
